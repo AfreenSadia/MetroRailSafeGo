@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.ServiceBus.MessageIdPlugin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin">
+            <summary>Generate Azure Service Bus <see cref="T:Microsoft.Azure.ServiceBus.Message"/> <see cref="P:Microsoft.Azure.ServiceBus.Message.MessageId"/> for outgoing messages.
+            <example>
+            var plugin = new MessageIdPlugin(() =&gt; Guid.NewGuid().ToString("N"));
+            queueClient.RegisterPlugin(plugin);
+            </example>
+            </summary>
+            <remarks>If a message ID is assigned, the value will not be replaced by the plugin.</remarks>
+        </member>
+        <member name="P:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin.Name">
+            <summary>
+            <inheritdoc cref="P:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin.Name"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin.#ctor(System.Func{Microsoft.Azure.ServiceBus.Message,System.String})">
+            <summary>
+            Create a new instance of <see cref="T:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin"/>
+            </summary>
+            <param name="messageIdGenerator">Message ID generator to use.</param>
+        </member>
+        <member name="M:Microsoft.Azure.ServiceBus.Plugins.MessageIdPlugin.BeforeMessageSend(Microsoft.Azure.ServiceBus.Message)">
+            <summary>
+            Assign message id if it's not already assigned.
+            <param name="message">The <see cref="T:Microsoft.Azure.ServiceBus.Message"/> to assign id to.</param>
+            </summary>
+            <returns><see cref="T:Microsoft.Azure.ServiceBus.Message"/> with id.</returns>
+        </member>
+    </members>
+</doc>
